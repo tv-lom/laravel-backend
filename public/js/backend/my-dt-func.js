@@ -1,1 +1,82 @@
-function dtBtnView(t,i,a,n){return void 0===t&&(t="#"),void 0===i&&(i="View"),void 0===a&&(a=""),void 0===n&&(n="_blank"),'<a href="'+t+'" class="btn btn-sm btn-primary" target="'+n+'" title="'+i+'" '+a+'><i class="far fa-eye" aria-hidden="true"></i></a>'}function dtBtnLink(t,i,a,n){return void 0===t&&(t="#"),void 0===i&&(i="Link"),void 0===a&&(a=""),void 0===n&&(n="_blank"),'<a href="'+t+'" class="btn btn-sm btn-primary" target="'+n+'" title="'+i+'" '+a+'><i class="fas fa-list" aria-hidden="true"></i></a>'}function dtBtnEdit(t,i,a){return void 0===t&&(t="#"),void 0===i&&(i="Edit"),void 0===a&&(a=""),'<a href="'+t+'" class="btn btn-sm btn-warning" title="'+i+'" '+a+'><i class="fas fa-wrench" aria-hidden="true"></i></a>'}function dtBtnDelete(t,i,a,n){return void 0===t&&(t="#"),void 0===i&&(i="Delete"),void 0===a&&(a=""),'<a href="'+t+'" class="form-confirm-del btn btn-sm btn-light ml-1 '+n+'" title="'+i+'" '+a+'><i class="fas fa-trash-alt" aria-hidden="true"></i></a>'}function dtTextStatus(t){let i="active";switch(t){case"Active":i="active";break;case"Inactive":i="inactive"}return'<span class="col-status col-status-'+i+'">'+t+"</span>"}function dtHtmlAnchor(t,i,a,n){return void 0===t&&(t="#"),void 0===i&&(i=""),void 0===a&&(a="btn btn-primary"),void 0===n&&(n=""),'<a href="'+t+'" class="'+a+'" '+n+">"+i+"</a>"}function dtConfirmRemoveRow(t,i){$(t).on("click","a.dt-btn-confirm-remove",function(t){t.preventDefault();let a=$(this),n=void 0===a.data("confirm")?"Delete This Record?":a.data("confirm");confirm(n)&&$.ajax({url:a.attr("href"),method:"POST"}).done(function(){i.row(a.parents("tr")).remove().draw()}).fail(function(t){alert(t)})})}
+function dtBtnView(href, text, attr, target) {
+    if(href === undefined) { href = '#' }
+    if(text === undefined) { text = 'View' }
+    if(attr === undefined) { attr = '' }
+    if(target === undefined) { target = '_blank' }
+
+    var btnView = '<a href="'+href+'" class="btn btn-sm btn-primary" target="'+target+'" title="'+text+'" '+attr+'><i class="far fa-eye" aria-hidden="true"></i></a>';
+    return btnView;
+};
+
+function dtBtnLink(href, text, attr, target) {
+    if(href === undefined) { href = '#' }
+    if(text === undefined) { text = 'Link' }
+    if(attr === undefined) { attr = '' }
+    if(target === undefined) { target = '_blank' }
+
+    var btnLink = '<a href="'+href+'" class="btn btn-sm btn-primary" target="'+target+'" title="'+text+'" '+attr+'><i class="fas fa-list" aria-hidden="true"></i></a>';
+    return btnLink;
+};
+
+function dtBtnEdit(href, text, attr) {
+    if(href === undefined) { href = '#' }
+    if(text === undefined) { text = 'Edit' }
+    if(attr === undefined) { attr = '' }
+
+        var btnEdit = '<a href="'+href+'" class="btn btn-sm btn-warning" title="'+text+'" '+attr+'><i class="fas fa-wrench" aria-hidden="true"></i></a>';
+    return btnEdit;
+};
+
+function dtBtnDelete(href, text, attr, additionalClass) {
+    if(href === undefined) { href = '#' }
+    if(text === undefined) { text = 'Delete' }
+    if(attr === undefined) { attr = '' }
+
+    var btnDelete = '<a href="'+href+'" class="form-confirm-del btn btn-sm btn-light ml-1 '+additionalClass+'" title="'+text+'" '+attr+'><i class="fas fa-trash-alt" aria-hidden="true"></i></a>';
+    return btnDelete;
+};
+
+function dtTextStatus(text) {
+    let status = 'active';
+    switch (text) {
+        case 'Active':
+            status = 'active';
+            break;
+        case 'Inactive':
+            status = 'inactive';
+    }
+    var spanStatus = '<span class="col-status col-status-'+status+'">'+text+'</span>';
+    return spanStatus;
+};
+
+function dtHtmlAnchor (href, text, attrClass, attr) {
+    if(href === undefined) { href = '#' }
+    if(text === undefined) { text = '' }
+    if(attrClass === undefined) { attrClass = 'btn btn-primary' }
+    if(attr === undefined) { attr = '' }
+
+    var anchorModal = '<a href="'+href+'" class="'+attrClass+'" '+attr+'>'+text+'</a>';
+    return anchorModal;
+};
+
+function dtConfirmRemoveRow(selector, dt) {
+    $(selector).on( 'click', 'a.dt-btn-confirm-remove', function (e) {
+        e.preventDefault();
+
+        let $this = $(this),
+            confirmText = ($this.data('confirm') === undefined) ? 'Delete This Record?' : $this.data('confirm') ;
+
+        if (confirm(confirmText)) {
+            $.ajax({
+                url: $this.attr('href'),
+                method: 'POST'
+            }).done(function(){
+                dt.row( $this.parents('tr') )
+                .remove()
+                .draw();
+            }).fail(function(data){
+                alert(data);
+            });
+        }
+    });
+}

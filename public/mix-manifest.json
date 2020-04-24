@@ -1,8 +1,8 @@
 {
-    "/js/app.js": "/js/app.js?id=f07211b3eed8a20e67b1",
-    "/css/app.css": "/css/app.css?id=b5bfef35494b6d203f19",
-    "/css/toastr.css": "/css/toastr.css?id=5681d7bc8c2b894d1fbb",
-    "/css/backend/app.css": "/css/backend/app.css?id=e7da74daa3eb68258f57",
-    "/js/backend/app.js": "/js/backend/app.js?id=82abc6c2ceded2448de9",
-    "/js/backend/my-dt-func.js": "/js/backend/my-dt-func.js?id=2efbe3f2fa5342d7dfff"
+    "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
+    "/css/toastr.css": "/css/toastr.css",
+    "/css/backend/app.css": "/css/backend/app.css",
+    "/js/backend/app.js": "/js/backend/app.js",
+    "/js/backend/my-dt-func.js": "/js/backend/my-dt-func.js"
 }
