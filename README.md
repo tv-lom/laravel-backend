@@ -4,8 +4,8 @@ Laravel backend with AdminLTE 3 (Laravel ^7.0)
 ## Installation
 1. ```git clone https://github.com/toyza55k/laravel-backend.git```
 1. ```composer install```
-1. ```
-	uncomment in config/app.php
+1. uncomment in config/app.php
+	```
 	'providers' => [
 		.
 		.
@@ -65,7 +65,7 @@ Laravel backend with AdminLTE 3 (Laravel ^7.0)
 
 ### Task Schedules
 for removing activity log and force delete rows in trash.
-1. ```* * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1```
+```* * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1```
 
 ### Production with shared host
 in .env  file
