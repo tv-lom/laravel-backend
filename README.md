@@ -24,6 +24,18 @@ Laravel backend with AdminLTE 3
 	php artisan db:seed
 	```
 1. ```npm install```
+1. ```php artisan storage:link```
+
+### Task Schedules
+for removing activity log and force delete rows in trash.
+1. ```* * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1```
+
+### Production with shared host
+in .env  file
+```
+FILESYSTEM_DRIVER=public_share_hosted
+MEDIA_DISK=public_share_hosted
+```
 
 ### use composer package
 - spatie/laravel-activitylog
