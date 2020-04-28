@@ -4,20 +4,6 @@ Laravel backend with AdminLTE 3 (Laravel ^7.0)
 ## Installation
 1. ```git clone https://github.com/toyza55k/laravel-backend.git```
 1. ```composer install```
-1. uncomment in config/app.php
-	```
-	'providers' => [
-		.
-		.
-		- Yajra\DataTables\DataTablesServiceProvider::class,
-    	- Spatie\Permission\PermissionServiceProvider::class,
-    ],
-    'alias' => [
-    	.
-    	.
-    	- 'DataTables' => Yajra\DataTables\Facades\DataTables::class,
-    ]
-    ```
 1. edit database in .env file
 	```
 	APP_URL=YOUR_APP_URL
