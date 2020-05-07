@@ -8,7 +8,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
 
-class ProfileTest extends TestCase
+class ProfileManagementTest extends TestCase
 {
     use RefreshDatabase;
 
