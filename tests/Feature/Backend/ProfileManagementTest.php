@@ -112,7 +112,7 @@ class ProfileManagementTest extends TestCase
         $user = factory(User::class)->create([
             'id' => 10,
             'email' => 'xxxx@xxxx.com',
-            'password' => bcrypt('password'),
+            'password' => 'password',
             'status' => 'active'
         ]);
 
