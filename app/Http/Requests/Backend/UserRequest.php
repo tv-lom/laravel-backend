@@ -31,10 +31,11 @@ class UserRequest extends FormRequest
             case 'PUT':
             case 'PATCH':
             {
-                $rules = [
-                    'email' => 'required|string|email|unique:users,email,' . $this->route('user')->id,
-                    'new_password' => 'sometimes'
-                ];
+                $rules['email'] = 'required|string|email|unique:users,email,' . $this->route('user')->id;
+                if (request()->filled('password')) {
+                    $rules['password'] = 'required|string|min:8|confirmed';
+                }
+
                 return $this->getMergedRule($rules);
             }
             default:break;

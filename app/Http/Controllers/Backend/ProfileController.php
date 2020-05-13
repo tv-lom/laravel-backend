@@ -30,9 +30,7 @@ class ProfileController extends Controller
     {
         $validatedData = $request->validated();
 
-        if (request()->filled('password')) {
-            $validatedData['password'] = bcrypt(request('password'));
-        } else {
+        if (empty(request('password'))) {
             unset($validatedData['password']);
         }
 

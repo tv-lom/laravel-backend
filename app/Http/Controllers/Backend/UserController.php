@@ -99,10 +99,7 @@ class UserController extends Controller
     {
         $this->authorize('add user list');
 
-        $validatedData = $request->validated();
-        $validatedData['password'] = bcrypt(request('password'));
-
-        $user = User::create($validatedData);
+        $user = User::create($request->validated());
         $user->storeAvatar();
         $user->storeRoles();
 
@@ -145,12 +142,7 @@ class UserController extends Controller
     {
         $this->authorize('edit user list');
 
-        $validatedData = $request->validated();
-
-        if (request()->filled('password')) 
-            $validatedData['password'] = bcrypt(request('password'));
-
-        $user->update($validatedData);
+        $user->update($request->validated());
         $user->storeAvatar();
         $user->storeRoles();
 

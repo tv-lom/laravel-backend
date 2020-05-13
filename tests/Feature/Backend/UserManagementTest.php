@@ -104,7 +104,7 @@ class UserManagementTest extends TestCase
         $userData = factory(User::class)->raw([
             'name' => 'test user',
             'email' => 'test@example.com',
-            'password_confirmation' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+            'password_confirmation' => 'password',
             'status' => 'active'
         ]);
 
@@ -404,6 +404,7 @@ class UserManagementTest extends TestCase
     /** @test */
     public function user_edited_can_change_roles()
     {
+        // $this->withoutExceptionHandling();
         $user = factory(User::class)->create([
             'id' => 10
         ])->assignRole('general user');
@@ -415,6 +416,7 @@ class UserManagementTest extends TestCase
         $userData = factory(User::class)->raw([
             'name' => 'test user',
             'email' => 'test@test.com',
+            'password' => null
         ]);
 
         $userData['roles'] = ['admin'];

@@ -43,6 +43,10 @@ class User extends Authenticatable implements HasMedia
     protected static $logFillable = true;
     protected static $recordEvents = ['updated', 'deleted'];
 
+    public function setPasswordAttribute($value) { 
+        $this->attributes['password'] = bcrypt($value); 
+    }
+
     public function getEditLinkAttribute() { return route('backend.user.edit', $this); }
 
     public function getDestroyLinkAttribute() { return route('backend.user.destroy', $this); }
