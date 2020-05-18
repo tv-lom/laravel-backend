@@ -69,4 +69,15 @@ Route::name('backend.')
 		});
 		Route::resource('role', 'RoleController'); // Resource must be last
 
+		// Mockup
+		Route::name('mockup.')
+			->prefix('mockup')
+			->group(function(){
+				Route::get('/form', 'MockupController@form')->name('form');
+		});
+
+		Route::group(['prefix' => 'laravel-filemanager'], function () {
+		     \UniSharp\LaravelFilemanager\Lfm::routes();
+		 });
+
 });

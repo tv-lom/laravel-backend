@@ -34,8 +34,25 @@
 						<p>Mockup Menu</p>
 					</a>
 				</li>
+				<li class="nav-item has-treeview">
+					<a href="#" class="nav-link">
+						<i class="nav-icon fas fa-vector-square"></i>
+						<p>
+							Mockup
+							<i class="fas fa-angle-left right"></i>
+						</p>
+					</a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item">
+							<a href="{{ route('backend.mockup.form') }}" class="nav-link {{ request()->routeIs('backend.mockup*') ? 'active' : '' }}">
+								<i class="fas fa-clipboard-list nav-icon"></i>
+								<p>Form Inputs</p>
+							</a>
+						</li>
+					</ul>
+				</li>
 				@canany(['access user list', 'access role list'])
-					<li class="nav-item has-treeview ">
+					<li class="nav-item has-treeview">
 						<a href="#" class="nav-link">
 							<i class="nav-icon fas fa-cogs"></i>
 							<p>
