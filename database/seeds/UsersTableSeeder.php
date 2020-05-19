@@ -15,19 +15,19 @@ class UsersTableSeeder extends Seeder
         User::create([
             'name' => 'General User',
             'email' => 'general-user@admin.com',
-            'password' => bcrypt('general_user_backend')
+            'password' => 'general_user_backend'
         ])->assignRole('general user');
 
     	User::create([
     		'name' => 'admin',
     		'email' => 'admin@admin.com',
-    		'password' => bcrypt('admin_backend')
+    		'password' => 'admin_backend'
     	])->assignRole('admin');
 
         User::create([
             'name' => 'Superadmin',
             'email' => 'superadmin@admin.com',
-            'password' => bcrypt('superadmin_backend')
+            'password' => 'superadmin_backend'
         ])->assignRole('super admin');
     }
 }

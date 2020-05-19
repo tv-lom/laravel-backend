@@ -24,6 +24,7 @@
         "spatie/laravel-view-models": "^1.3",
         "tightenco/quicksand": "^2.4",
         "toyza55k/laravel-backend-preset": "dev-master",
+        "unisharp/laravel-filemanager": "^2.1",
         "yajra/laravel-datatables-oracle": "^9.0"
     },
     "require-dev": {
