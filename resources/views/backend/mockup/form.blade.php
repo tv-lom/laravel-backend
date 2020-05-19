@@ -19,6 +19,7 @@
 						</h3>
 					</div>
 					<div class="card-body">
+
 						<div class="form-group row">
 							<label for="name" class="col-sm-2 col-form-label text-lg-right">Input <span class="text-danger">*</span></label>
 							<div class="col-sm-6">
@@ -34,11 +35,27 @@
 						</div>
 
 						<div class="form-group row">
-							<label for="name" class="col-sm-2 col-form-label text-lg-right">TinyMCE</label>
+							<label for="name" class="col-sm-2 col-form-label text-lg-right">TinyMCE<br>Filemanager</label>
 							<div class="col-sm-6">
 								<textarea class="form-control" id="tinymce_textarea" rows="20"></textarea>
 							</div>
 						</div>
+
+						<div class="form-group row">
+							<label for="dt_picker" class="col-sm-2 col-form-label text-lg-right">DateTime (range) Picker</label>
+							<div class="col-sm-4">
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+									</div>
+									<input type="text" name="dt_picker" class="form-control" id="dt_picker">
+								</div>
+								<small class="form-text text-muted">
+									<a href="https://www.daterangepicker.com/" target="_blank">Link to document (datarangepicker.com)</a>
+								</small>
+							</div>
+						</div>
+
 					</div>
 				</div>
 			</div>
@@ -47,43 +64,38 @@
 </section>
 @endsection
 
+{{-- TinyMCE --}}
 @include('backend.scripts.tinymce')
+
+{{-- DateRange Picker --}}
+@include('backend.scripts.daterangepicker')
 
 @push('after-scripts')
 <script>
-	var editor_config = {
-	    path_absolute : "/",
-	    selector: "textarea#tinymce_textarea",
-	    plugins: [
-	      "advlist autolink lists link image charmap print preview hr anchor pagebreak",
-	      "searchreplace wordcount visualblocks visualchars code fullscreen",
-	      "insertdatetime media nonbreaking save table contextmenu directionality",
-	      "emoticons template paste textcolor colorpicker textpattern"
-	    ],
-	    toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media",
-	    relative_urls: false,
-	    file_browser_callback : function(field_name, url, type, win) {
-	      var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
-	      var y = window.innerHeight|| document.documentElement.clientHeight|| document.getElementsByTagName('body')[0].clientHeight;
 
-	      var cmsURL = editor_config.path_absolute + 'laravel-filemanager?field_name=' + field_name;
-	      if (type == 'image') {
-	        cmsURL = cmsURL + "&type=Images";
-	      } else {
-	        cmsURL = cmsURL + "&type=Files";
-	      }
+	/* 
+	 *
+	 * TinyMCE 
+	 * 
+	 */
+	// editorConfig.selector = '#...';
+	tinymce.init(editorConfig);
 
-	      tinyMCE.activeEditor.windowManager.open({
-	        file : cmsURL,
-	        title : 'Filemanager',
-	        width : x * 0.8,
-	        height : y * 0.8,
-	        resizable : "yes",
-	        close_previous : "no"
-	      });
-	    }
-	  };
-
-	  tinymce.init(editor_config);
+	/* 
+	 *
+	 * DateRange Picker 
+	 * 
+	 */
+	$('#dt_picker').daterangepicker({
+		startDate: moment(),
+		showDropdowns: true,
+		timePicker: true,
+		timePickerIncrement: 5,
+		timePicker24Hour: true,
+		singleDatePicker: true,
+		locale: {
+		  	format: 'YYYY-MM-DD HH:mm'
+		}
+	});
 </script>
 @endpush

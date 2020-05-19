@@ -76,8 +76,9 @@ Route::name('backend.')
 				Route::get('/form', 'MockupController@form')->name('form');
 		});
 
+		// Laravel Filemanager
 		Route::group(['prefix' => 'laravel-filemanager'], function () {
-		     \UniSharp\LaravelFilemanager\Lfm::routes();
-		 });
+		    \UniSharp\LaravelFilemanager\Lfm::routes();
+		});
 
 });

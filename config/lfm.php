@@ -26,7 +26,7 @@ return [
     |
      */
 
-    'allow_private_folder'     => true,
+    'allow_private_folder'     => false, // default true;
 
     // Flexible way to customize client folders accessibility
     // If you want to customize client folders, publish tag="lfm_handler"
