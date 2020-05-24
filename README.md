@@ -4,6 +4,7 @@ Laravel backend with AdminLTE 3 (Laravel ^7.0)
 ## Installation
 1. ```git clone https://github.com/toyza55k/laravel-backend.git .```
 1. ```composer install```
+1. ```npm install``` (do not run in docker container)
 1. edit database in .env file
 	```
 	APP_URL=YOUR_APP_URL
@@ -23,7 +24,6 @@ Laravel backend with AdminLTE 3 (Laravel ^7.0)
 	php artisan db:seed
 	```
 1. ```php artisan storage:link```
-1. ```npm install``` (do not run in workspace)
 
 ## Username Password
 	url: YOUR_APP_URL/backend
